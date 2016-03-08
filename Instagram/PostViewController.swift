@@ -8,8 +8,9 @@
 
 import UIKit
 import Parse
+import MBProgressHUD
 
-class PostViewController: UIViewController,UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class PostViewController: UIViewController,UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate {
 
     @IBOutlet weak var addPhotoButton: UIButton!
     @IBOutlet weak var selectPhotoCaption: UILabel!
@@ -35,13 +36,11 @@ class PostViewController: UIViewController,UINavigationControllerDelegate, UIIma
     func imagePickerController(picker: UIImagePickerController,
         didFinishPickingMediaWithInfo info: [String : AnyObject]) {
             let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-     //       let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
             image = originalImage
             dismissViewControllerAnimated(true, completion: nil)
             self.userImageView.image = image
             if userImageView != nil {
                 selectPhotoCaption.hidden = true
-                addPhotoButton.hidden = true
             }
     }
     
@@ -56,8 +55,10 @@ class PostViewController: UIViewController,UINavigationControllerDelegate, UIIma
     }
 
     @IBAction func onSubmitImage(sender: AnyObject) {
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         if userImageView.image != nil || captionField.text != nil {
             UserMedia.postUserImage(userImageView.image, withCaption: self.captionField.text, withCompletion: nil)
+            MBProgressHUD.hideHUDForView(self.view, animated: true)
         }
             
         else {
@@ -107,6 +108,9 @@ class PostViewController: UIViewController,UINavigationControllerDelegate, UIIma
             }
             return nil
         }
+    }
+    @IBAction func onTapOutside(sender: AnyObject) {
+        self.view.endEditing(true)
     }
 
     /*

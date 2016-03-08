@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import ParseUI
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -18,11 +19,18 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "refreshControlAction:", forControlEvents: UIControlEvents.ValueChanged)
+        tableView.insertSubview(refreshControl, atIndex: 0)
+        
         self.getPosts()
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadList:",name:"load", object: nil)
+        
+        self.tableView.estimatedRowHeight = 250
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadList:", name:"load", object: nil)
 
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -42,7 +50,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             if error == nil {
                 self.instaPosts = results
                 self.tableView.reloadData()
-                
             } else {
                 print(error)
             }
@@ -71,6 +78,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         return cell
     }
-
+    
+    func refreshControlAction(refreshControl: UIRefreshControl) {
+        self.getPosts()
+        refreshControl.endRefreshing()
+    }
+    
 }
 

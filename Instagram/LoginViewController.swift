@@ -62,6 +62,11 @@ class LoginViewController:
             }
         }
     }
+    
+    @IBAction func onTap(sender: AnyObject) {
+        self.view.endEditing(true)
+    }
+    
     /*
     // MARK: - Navigation
 

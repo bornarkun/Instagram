@@ -19,12 +19,14 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Space" translatesAutoresizingMaskIntoConstraints="NO" id="axN-un-Xag">
                                 <rect key="frame" x="-86" y="-154" width="850" height="1099"/>
+                                <gestureRecognizers/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Instagram" translatesAutoresizingMaskIntoConstraints="NO" id="pxb-dd-u1w">
                                 <rect key="frame" x="-12" y="-12" width="398" height="241"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SFk-u5-ZqY">
-                                <rect key="frame" x="87" y="374" width="200" height="30"/>
+                                <rect key="frame" x="87" y="371" width="200" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Login">
                                     <color key="titleColor" red="0.46293397930000002" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -45,12 +47,18 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NXO-dx-c6f">
-                                <rect key="frame" x="61" y="237" width="252" height="30"/>
+                                <rect key="frame" x="69" y="237" width="237" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mnT-Pt-W4y">
+                                <rect key="frame" x="69" y="319" width="237" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="alert" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dqM-kT-7gB">
-                                <rect key="frame" x="87" y="412" width="200" height="30"/>
+                                <rect key="frame" x="87" y="401" width="200" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Sign up">
                                     <color key="titleColor" red="0.46293397930000002" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -58,13 +66,12 @@
                                     <action selector="onSignUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="awz-bI-Lnh"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mnT-Pt-W4y">
-                                <rect key="frame" x="61" y="319" width="252" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="WKC-bT-fKG" appends="YES" id="gBL-ov-X8A"/>
+                        </connections>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
@@ -74,10 +81,15 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="WKC-bT-fKG">
+                    <connections>
+                        <action selector="onTap:" destination="BYZ-38-t0r" id="aKD-b8-wE8"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="304.5" y="363.5"/>
         </scene>
-        <!--Home View Controller-->
+        <!--Home-->
         <scene sceneID="3bp-vA-bLM">
             <objects>
                 <viewController id="rql-am-YIW" customClass="HomeViewController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
@@ -100,16 +112,32 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="249"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHO-sQ-5M2">
-                                                    <rect key="frame" x="0.0" y="206" width="375" height="35"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xWW-Kw-83q">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="210"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="210" id="nZj-8r-Z11"/>
+                                                        <constraint firstAttribute="width" constant="375" id="pKZ-CQ-ORa"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHO-sQ-5M2">
+                                                    <rect key="frame" x="0.0" y="218" width="375" height="31"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="375" id="GrE-Tr-XlI"/>
+                                                        <constraint firstAttribute="height" constant="31" id="YCh-mc-YlI"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xWW-Kw-83q">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="210"/>
-                                                </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="DHO-sQ-5M2" secondAttribute="bottom" id="E2c-Jg-m4a"/>
+                                                <constraint firstItem="xWW-Kw-83q" firstAttribute="top" secondItem="tB2-k8-qfp" secondAttribute="top" id="aKS-cJ-SdN"/>
+                                                <constraint firstAttribute="trailing" secondItem="xWW-Kw-83q" secondAttribute="trailing" id="dYw-zP-tbB"/>
+                                                <constraint firstItem="DHO-sQ-5M2" firstAttribute="leading" secondItem="tB2-k8-qfp" secondAttribute="leading" id="edI-S7-7Gd"/>
+                                                <constraint firstItem="DHO-sQ-5M2" firstAttribute="top" relation="greaterThanOrEqual" secondItem="xWW-Kw-83q" secondAttribute="bottom" constant="4" id="nJa-l6-y50"/>
+                                                <constraint firstItem="xWW-Kw-83q" firstAttribute="leading" secondItem="tB2-k8-qfp" secondAttribute="leading" id="stc-im-9S3"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="postedCaption" destination="DHO-sQ-5M2" id="1IC-wQ-5Hm"/>
@@ -121,7 +149,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="unN-s1-ifr"/>
+                    <navigationItem key="navigationItem" title="Home" id="unN-s1-ifr"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="tableView" destination="rtj-Pq-r8h" id="o3w-dw-5dG"/>
@@ -169,7 +197,7 @@
             </objects>
             <point key="canvasLocation" x="1387.5" y="363.5"/>
         </scene>
-        <!--Profile View Controller-->
+        <!--Me-->
         <scene sceneID="76a-1W-N0W">
             <objects>
                 <viewController id="EvK-Pp-3wH" customClass="ProfileViewController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
@@ -196,14 +224,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="9DP-Fp-vOZ"/>
+                    <navigationItem key="navigationItem" title="Me" id="9DP-Fp-vOZ"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h47-bI-ad9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1387.5" y="1139.5"/>
         </scene>
-        <!--Post View Controller-->
+        <!--Post-->
         <scene sceneID="xfs-iG-m4O">
             <objects>
                 <viewController id="VOI-D3-PSw" customClass="PostViewController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
@@ -217,6 +245,7 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Green Asteroids" translatesAutoresizingMaskIntoConstraints="NO" id="UD3-X7-74R">
                                 <rect key="frame" x="-144" y="46" width="662" height="616"/>
+                                <gestureRecognizers/>
                             </imageView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="91y-XH-7Yf">
                                 <rect key="frame" x="37" y="87" width="300" height="300"/>
@@ -239,12 +268,12 @@
                                 </subviews>
                             </view>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your Caption Here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xgW-ih-u0h">
-                                <rect key="frame" x="37" y="414" width="300" height="30"/>
+                                <rect key="frame" x="37" y="413" width="300" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5SY-Ow-T45">
-                                <rect key="frame" x="-20" y="460" width="415" height="109"/>
+                                <rect key="frame" x="-20" y="461" width="415" height="109"/>
                                 <state key="normal" image="Post">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -254,8 +283,12 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="clM-qH-S6U" appends="YES" id="1pG-oo-JNe"/>
+                        </connections>
                     </view>
-                    <navigationItem key="navigationItem" id="Hyh-rP-ceG"/>
+                    <navigationItem key="navigationItem" title="Post" id="Hyh-rP-ceG"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="addPhotoButton" destination="e3m-nA-sj8" id="nEr-Hc-mtQ"/>
@@ -265,6 +298,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o3y-Lx-wH1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="clM-qH-S6U">
+                    <connections>
+                        <action selector="onTapOutside:" destination="VOI-D3-PSw" id="qiX-6v-hTK"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1387.5" y="-427.5"/>
         </scene>
@@ -310,7 +348,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Blue" width="2160" height="2160"/>
+        <image name="Blue" width="822" height="822"/>
         <image name="Camera" width="32" height="32"/>
         <image name="Green Asteroids" width="1667" height="1667"/>
         <image name="House" width="32" height="32"/>
